@@ -1,0 +1,158 @@
+/* -------------------------------------------------------------------------
+   Global Styles & Variables
+   ------------------------------------------------------------------------- */
+:root {
+  --bg-main: #0d1b2a;        /* Deep night blue */
+  --bg-overlay: rgba(13, 27, 42, 0.6);
+  --clr-accent: #ffbfd5;     /* Soft pink */
+  --text-light: #ffffff;
+  --font-main: "Poppins", sans-serif;
+  --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--text-light);
+  background: var(--bg-main);
+  overflow-x: hidden;
+}
+
+/* -------------------------------------------------------------------------
+   Reusable Utility Classes
+   ------------------------------------------------------------------------- */
+.section {
+  padding: 4rem 1.5rem;
+  max-width: 960px;
+  margin: auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--clr-accent);
+  color: #000;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  margin-top: 20px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* -------------------------------------------------------------------------
+   Header / Hero Section
+   ------------------------------------------------------------------------- */
+#welcome {
+  position: relative;
+  height: 100vh;
+  background: url("assets/background.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#welcome .overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-overlay);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+/* -------------------------------------------------------------------------
+   Memories Gallery
+   ------------------------------------------------------------------------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 15px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* -------------------------------------------------------------------------
+   Love Letter Styling
+   ------------------------------------------------------------------------- */
+.letter-text {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+/* -------------------------------------------------------------------------
+   Video Section
+   ------------------------------------------------------------------------- */
+video {
+  max-width: 100%;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-soft);
+}
+
+/* -------------------------------------------------------------------------
+   Floating Stars Animation (JS injects .star elements)
+   ------------------------------------------------------------------------- */
+.star {
+  position: fixed;
+  top: -10px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0.8;
+  box-shadow: 0 0 6px #ffffff;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
